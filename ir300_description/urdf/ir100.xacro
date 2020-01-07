@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<robot name="ir100_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="ir100_robot">
+
+  <material name="OffWhite">
+    <color rgba="0.8 0.8 0.8 1.0"/>
+  </material>
+
+  <link name="base_link" >
+    <inertial>
+      <mass value="0.0001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5717 0 0" />
+      <geometry>
+        <mesh filename="package://ir100_description/meshes/base_link.stl" />
+      </geometry>
+      <material name="OffWhite" />
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0 0.017" rpy="0 0 0" />
+      <geometry>
+       <box size="0.001 0.001 0.001" />
+      </geometry>
+    </collision>-->
+  </link>
+
+  <link name="left_wheel_link" >
+      <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ir100_description/meshes/wheel.stl" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.2565 0.08" rpy="-1.5707963267949 0.343792057554545 3.14159265358979" />
+    <parent link="base_link" />
+    <child link="left_wheel_link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+
+  <link name="right_wheel_link" >
+     <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ir100_description/meshes/wheel.stl" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0 -0.2565 0.08" rpy="1.5707963267949 1.11682274353561 3.14159265358979" />
+    <parent link="base_link" />
+    <child link="right_wheel_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <link name="imu_link" >
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.3512 0.1309 0.205" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+
+    <link name="sonar_link1" >
+  </link>
+  <joint name="sonar1_joint" type="fixed">
+    <origin xyz="0.3575 0.3277 0.28435" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="sonar_link1" />
+  </joint>
+
+     <link name="sonar_link2" >
+  </link>
+  <joint name="sonar2_joint" type="fixed">
+    <origin xyz="0.5053 0.2265 0.28435" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="sonar_link2" />
+  </joint>
+
+    <link name="sonar_link3" >
+  </link>
+  <joint name="sonar3_joint" type="fixed">
+    <origin xyz="0.5053 -0.2265 0.28435" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="sonar_link3" />
+  </joint>
+
+    <link name="sonar_link4" >
+  </link>
+  <joint name="sonar4_joint" type="fixed">
+    <origin xyz="0.3575 -0.3277 0.28435" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="sonar_link4" />
+  </joint>
+
+  <link name="camera_link" >
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.49757 0 0.15785" rpy="0 0.2618 0" />
+    <parent link="base_link" />
+    <child link="camera_link" />
+  </joint>
+
+  <link name="front_laser" >
+    <!--inertial>
+      <mass value="0.0001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.10383" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ir100_description/meshes/laser.stl" />
+      </geometry>
+      <material name="OffWhite" />
+    </visual-->
+    <!--<collision>
+      <origin xyz="0 0 0.017" rpy="0 0 0" />
+      <geometry>
+       <box size="0.001 0.001 0.001" />
+      </geometry>
+    </collision>-->
+  </link>
+  <joint name="front_laser_joint" type="fixed">
+    <origin xyz="0.44576 0.27076 0.22794" rpy="0 0 0.7854" />
+    <parent link="base_link" />
+    <child link="front_laser" />
+  </joint>
+
+  <link name="rear_laser" >
+    <!--inertial>
+      <mass value="0.0001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.10383" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ir100_description/meshes/laser.stl" />
+      </geometry>
+      <material name="OffWhite" />
+    </visual-->
+    <!--<collision>
+      <origin xyz="0 0 0.017" rpy="0 0 0" />
+      <geometry>
+       <box size="0.001 0.001 0.001" />
+      </geometry>
+    </collision>-->
+  </link>
+  <joint name="rear_laser_joint" type="fixed">
+    <origin xyz="-0.44576 -0.27076 0.22794" rpy="0 0 -2.3562" />
+    <parent link="base_link" />
+    <child link="rear_laser" />
+  </joint>
+
+</xacro:macro>
+</robot>
