@@ -1,4 +1,4 @@
-# use_ir300_navigation.md
+# use_ir300_navigation
 
 ## setup_1
 
